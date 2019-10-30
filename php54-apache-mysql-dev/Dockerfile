@@ -18,6 +18,13 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install gd \
     && docker-php-ext-configure mysql --with-mysql=mysqlnd \
     && docker-php-ext-install mysql
+	&& docker-php-ext-install mysqli
+	&& pdo
+	&& pdo_mysql
+	
+
+RUN cp /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load	
+	
 
 # Add a PHP config file. The file was copied from a php53 dotdeb package and
 # lightly modified (mostly for improving debugging). This may not be the best
