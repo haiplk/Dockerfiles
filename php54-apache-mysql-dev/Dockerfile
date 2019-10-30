@@ -1,5 +1,4 @@
 FROM php:5.4-apache
-MAINTAINER Florian Bender <fb+dockerhub@quantumedia.de>
 
 # This image is not to be used on a production server!
 # I use it for local development on old projects (hence the PHP version).
@@ -17,10 +16,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd \
     && docker-php-ext-configure mysql --with-mysql=mysqlnd \
-    && docker-php-ext-install mysql
-	&& docker-php-ext-install mysqli
-	&& pdo
-	&& pdo_mysql
+    && docker-php-ext-install mysql mysqli pdo pdo_mysql
 	
 
 RUN cp /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load	
